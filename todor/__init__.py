@@ -2,21 +2,18 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
+def create_App():
+    app= Flask(__name__)
+    db = SQLAlchemy()
+    app.config.from_mapping(
+        DEBUG = True,
+        SECRET_KEY="dev",
+        SQLALCHEMY_DATABASE_URI= "sqlite:///todo.db"
 
-db = SQLAlchemy()
+    )
 
-
-app= Flask(__name__)
-
-
-app.config.from_mapping(
-    DEBUG = True,
-    SECRET_KEY="dev",
-    SQLALCHEMY_DATABASE_URI= "sqlite:///todo.db"
-
-)
-
-db.init_app(app)
+    
+    db.init_app(app)
 
 
 
